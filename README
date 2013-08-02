@@ -1,7 +1,18 @@
 This is a mirror of http://www.vim.org/scripts/script.php?script_id=2089
 
-If we call ":Acpp" when editing "/path/to/file/src/ae/cmd/File.cpp", VIM opens complementary "/path/to/file/include/ae/cmd/File.h" file, and vice versa. That is, it searches for the last occurrence of "/src/" or "/include/" and changes this along with the file extension (h to cpp, and cpp to h).
-NOTE: This works with ONLY single occurrence of "/src/" or "/include/"
-If current full path doesn't contain "/src/" or "/include/" and/or does not end with "h" or "cpp" then "Acpp" opens a file named "0"
+If you call "Acpp" when editing "/path/to/file/src/Window.cpp", the script:
+* sees if there's "/path/to/file/src/" directory;
+** if so:
+*** switch to "/path/to/file/include/Window" if it exists;
+*** switch to "/path/to/file/include/Window.h" even if it doesn't exist;
+** if not:
+*** switch to "/path/to/file/src/Window" if it exists;
+*** switch to "/path/to/file/src/Window.h" even if it doesn't exist.
+
+If you call "Acpp" when editing "/path/to/file/include/Window"
+or "/path/to/file/include/Window.h", the script:
+* sees if there's "/path/to/file/src/" directory;
+** if so:
+*** switch to "/path/to/file/src/Window.cpp" even if it doesn't exist.
 
 It does not strictly depend on Vim 7, it's just the version I have, the script should work fine with previous versions too.
